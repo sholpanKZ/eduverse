@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get "/courses", to: "courses#index"
+   get "/courses/:id", to: "courses#show"
   get 'home/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

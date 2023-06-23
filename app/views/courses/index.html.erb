@@ -2,7 +2,9 @@
 <ul>
   <% @courses.each do |course| %>
     <li>
+      <a href="/course/<%= course.id %>">
       <%= course.title %>
+      </a>
     </li>
   <% end %>
 </ul>
