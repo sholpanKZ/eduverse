@@ -19,4 +19,9 @@ class CoursesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+   private
+    def course_params
+      params.require(:course).permit(:title, :body, :video_url)
+    end
 end
