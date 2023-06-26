@@ -1,0 +1,18 @@
+<%= form_with model: [ @course, @course.lessons.build ] do |form| %>
+  <p>
+<%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.label :video_url %><br>
+    <%= form.text_area :video_url %><br>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
