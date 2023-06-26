@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
   def show
-    @courses = Course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def new
@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(title: "...", body: "...",video_url:"...")
+    @course = Course.new(course_params)
 
     if @course.save
       redirect_to @course
@@ -33,6 +33,7 @@ class CoursesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
    private
     def course_params
       params.require(:course).permit(:title, :body, :video_url)

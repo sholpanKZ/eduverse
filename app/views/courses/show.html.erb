@@ -1,3 +1,7 @@
 <h1><%= @course.title %></h1>
 
 <p><%= @course.body %></p>
+<iframe width="560" height="315" src="<%= @course.video_url %>" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<ul>
+  <li><%= link_to "Edit", edit_course_path(@course) %></li>
+</ul>
