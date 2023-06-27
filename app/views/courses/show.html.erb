@@ -15,5 +15,4 @@
   <%= render @course.lessons %>
 </ul>
 
-<h2>Add a lesson:</h2>
-<%= render 'lessons/form' %>
+ <%= link_to "New Lesson", new_course_lesson_path(@course) %>

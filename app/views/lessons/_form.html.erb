@@ -1,18 +1,29 @@
-<%= form_with model: [ @course, @course.lessons.build ] do |form| %>
-  <p>
-<%= form.label :title %><br>
+<%= form_with model: [@lesson.course, @lesson]  do |form| %>
+  <div>
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
-  </p>
-  <p>
+    <% @lesson.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
+    <%= form.text_area :body %><br>
+    <% @lesson.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+   <div>
     <%= form.label :video_url %><br>
     <%= form.text_area :video_url %><br>
-  </p>
+    <% @lesson.errors.full_messages_for(:video_url).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-  <p>
+  <div>
     <%= form.submit %>
-  </p>
+  </div>
 <% end %>

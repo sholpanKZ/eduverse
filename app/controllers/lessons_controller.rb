@@ -9,8 +9,12 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
    end
 
+   def new
+     @lesson = Lesson.new(course_id: params[:course_id])
+   end
+
    def edit
-     @asdfasdfasfasfasfd = Lesson.find(params[:id])
+     @lesson = Lesson.find(params[:id])
    end
 
   def update
