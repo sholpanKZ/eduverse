@@ -16,11 +16,7 @@
   </div>
 
    <div>
-    <%= form.label :video_url %><br>
-    <%= form.text_area :video_url %><br>
-    <% course.errors.full_messages_for(:video_url).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div>

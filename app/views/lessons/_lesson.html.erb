@@ -1,14 +1,3 @@
-<p>
-  <strong>Title:</strong>
-  <%= lesson.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= lesson.body %>
-</p>
-
-<p>
-  <strong>Video:</strong>
-  <%= lesson.video_url %>
-</p>
+<li>
+<%= link_to lesson.title, course_lesson_path(@course, lesson) %>
+</li>

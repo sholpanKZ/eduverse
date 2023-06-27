@@ -2,8 +2,16 @@
 <ul>
   <% @courses.each do |course| %>
     <li>
-       <%= link_to course.title, course %>
+      <%= link_to course do %>
+        <% if course.images.attached? %>
+          <% course.images.each do |image| %>
+            <%= image_tag image, {height: "80px", class: "nav-link", style: "border-radius: 5px;"} %>
+          <% end %>
+        <% end %>
+        <%= course.title %>
+      <% end %>
     </li>
+
   <% end %>
 </ul>
 <%= link_to "New Course", new_course_path %>

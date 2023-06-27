@@ -1,17 +1,19 @@
-<h1><%= @course.title %></h1>
+ <h1>Course: <%= @course.title %></h1>
 
-<p><%= @course.body %></p>
-<iframe width="560" height="315" src="<%= @course.video_url %>" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<ul>
-  <li><%= link_to "Edit", edit_course_path(@course) %></li>
+
+<li><%= link_to "Edit", edit_course_path(@course) %></li>
    <li><%= link_to "Destroy", course_path(@course), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+<h3>About course: </h3><p><%= @course.body %></p>
 
-<h2>Lessons</h2>
-<%= render @course.lessons %>
+
+<h3>Lessons</h3>
+<ul>
+  <%= render @course.lessons %>
+</ul>
 
 <h2>Add a lesson:</h2>
 <%= render 'lessons/form' %>

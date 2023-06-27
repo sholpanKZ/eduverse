@@ -44,6 +44,6 @@ class CoursesController < ApplicationController
 
    private
     def course_params
-      params.require(:course).permit(:title, :body, :video_url)
+      params.require(:course).permit(:title, :body, images: [])
     end
 end
