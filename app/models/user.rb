@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  has_many :likes
+
   VALID_ROLES = %w[student admin instructor]
   validates :role, inclusion: { in: VALID_ROLES }
 

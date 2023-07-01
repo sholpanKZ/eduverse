@@ -10,8 +10,12 @@
         <% end %>
         <%= course.title %>
       <% end %>
+      <form action="/likes" method="post">
+         <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token %> "/>
+         <input type ="hidden" name="like[course_id]" value="<%=course.id %> "/>
+         <input type="submit" value="Like"/>
+      </form>
     </li>
-
   <% end %>
 </ul>
 <%= link_to "New Course", new_course_path %>
