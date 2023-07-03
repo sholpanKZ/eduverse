@@ -5,14 +5,14 @@ class LikesController < ApplicationController
     unless @like.save
       flash[:notice] = "You can't like more than once"
     end
-    redirect_to @like.course
+    redirect_to courses_path
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
     @course = @like.course
     @like.destroy
-    redirect_to course
+    redirect_to courses_path
   end
 
   private
