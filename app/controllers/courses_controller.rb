@@ -3,7 +3,14 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
   def show
-    @course = Course.find(params[:id])
+    @course=Course.where(id:params[:id]).first
+    unless @course.present?
+      redirect_to("/")
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
