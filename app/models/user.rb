@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 
   has_many :likes
+  has_many :favorite_courses, source: :course, through: :likes #userslikes
 
   VALID_ROLES = %w[student admin instructor]
   validates :role, inclusion: { in: VALID_ROLES }
