@@ -1,0 +1,14 @@
+<%= form_with model: @quiz, url: course_quiz_path(@course), local: true do |form| %>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% @quiz.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

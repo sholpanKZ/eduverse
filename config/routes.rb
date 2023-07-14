@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :courses do
     resources :lessons
+    resource :quiz
   end
 
   resources :likes, only: [:create, :destroy]

@@ -1,0 +1,45 @@
+<h2>Quiz of course "<%= @course.title %>"</h2>
+
+<%= link_to "Edit QUIZ", edit_course_quiz_path(@course) %>
+<br>
+<br>
+
+<form>
+  <% bodyHash = eval(@quiz.body) %>
+  <% bodyHash[:questions].each_with_index do |q, questionIndex| %>
+    <b>Question <%= questionIndex + 1 %>:</b>
+    <br>
+    <i><%= q[:question] %></i>
+    <br>
+    <% q[:array_options].each_with_index do |op, optionIndex| %>
+      <% optionId = questionIndex.to_s + ":" + optionIndex.to_s %>
+      <label for="inputradio-<%= questionIndex %>"><%= op[:option_text] %></label>
+      <input type="radio" name="inputradio-<%= questionIndex %>" value="<%= optionId %>" />
+      <br>
+    <% end %>
+    <br>
+  <% end %>
+
+  <button type="submit" onclick="Submit()">submit</button>
+
+</form>
+
+ <script>
+        const all = <%= bodyHash[:questions].count %>;
+        const bodyJson = <%= raw(bodyHash.to_json) %>;
+
+        function Submit() {
+            let correct = 0;
+            const radioInputs = document.querySelectorAll('input[type="radio"]:checked');
+            radioInputs.forEach((input) => {
+                let questionIndex = input.value.split(":")[0];
+                let optionIndex = input.value.split(":")[1];
+                if (bodyJson["questions"][questionIndex]["array_options"][optionIndex]["correct"]) {
+                    correct++;
+                }
+            });
+            alert("Your score: " + correct + "/" + all)
+            return false;
+        }
+</script>
+

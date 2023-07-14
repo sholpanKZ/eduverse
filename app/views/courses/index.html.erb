@@ -8,8 +8,10 @@
             <%= image_tag image, {height: "80px", class: "nav-link", style: "border-radius: 5px;"} %>
           <% end %>
         <% end %>
-        <%= course.title %>
+         <%= course.title %>
       <% end %>
+
+
         <br>
        Likes: <%= course.likes.count %>
      <% like = current_user.likes.find_by(course: course) %>
@@ -28,6 +30,15 @@
       <% end %>
     </li>
 
+    <% if course.quiz.nil? %>
+        <li><%= link_to "Add QUIZ", new_course_quiz_path(course) %></li>
+      <% else %>
+        <li><%= link_to "Get QUIZ", course_quiz_path(course) %></li>
+      <% end %>
+
+
+    <br>
+    <br>
   <% end %>
 </ul>
 <%= link_to "New Course", new_course_path %>
